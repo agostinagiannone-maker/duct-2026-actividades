@@ -1,0 +1,28 @@
+
+ACTIVIDAD 4 - PRUEBAS CON PYTEST
+
+1. ¿Qué pasaría con test_frecuencias_mayusculas si en analizador.py sacaras el .lower()? Probalo y describí qué mensaje de error muestra pytest.
+
+Si eliminamos .lower(), la función deja de convertir todas las palabras a minúsculas. Por lo tanto, considera "Sol", "sol" y "SOL" como palabras diferentes.
+
+La prueba falla porque espera que la palabra "sol" tenga una frecuencia de 3, pero en realidad tiene una frecuencia de 1.
+
+Pytest muestra el siguiente mensaje de error:
+
+E assert 1 == 3
+
+Esto demuestra que las pruebas permiten detectar si una modificación afecta el funcionamiento esperado de la función.
+
+2. ¿Por qué contar_frecuencias recibe un string directamente en vez de una ruta de archivo, como en la Clase 2? ¿Qué ventaja tiene eso a la hora de escribir pruebas?
+
+La función recibe directamente un string porque así puede trabajar con el texto sin necesidad de abrir o leer un archivo.
+
+Esto facilita la escritura de pruebas porque podemos ingresar diferentes textos directamente en cada caso, sin tener que crear archivos adicionales.
+
+3. ¿Se te ocurre algún otro caso de borde para probar? Escribí una cuarta prueba con ese caso.
+
+Un caso de borde que podemos probar es un texto con espacios de más entre las palabras y al principio o al final.
+
+La función utiliza .split(), que permite separar las palabras aunque haya varios espacios consecutivos. Por eso, el resultado debería ser el mismo que si hubiera un solo espacio entre cada palabra.
+
+Para comprobarlo, agregué la prueba test_frecuencias_espacios(), que verifica que las frecuencias sean correctas incluso cuando el texto contiene espacios adicionales.
